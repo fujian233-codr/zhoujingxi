@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生日快乐 - 给周晶曦</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #a2d5f2, #b5e1f7, #d4f1f9, #ffd6e7, #ffefd6);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #2c3e50;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 主内容容器 */
+        .main-content {
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 70px 50px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15), 
+                        0 0 100px rgba(255, 182, 193, 0.3) inset;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            z-index: 2;
+        }
+
+        /* 日期显示样式 */
+        .date-display {
+            font-size: 3.2rem;
+            color: #ff6bc9;
+            margin-bottom: 40px;
+            font-weight: 700;
+            text-shadow: 3px 3px 6px rgba(52, 152, 219, 0.2);
+            line-height: 1.3;
+            position: relative;
+            display: inline-block;
+            padding: 0 20px;
+        }
+
+        .date-display::before,
+        .date-display::after {
+            content: "✦";
+            position: absolute;
+            color: #ff6bc9;
+            font-size: 1.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.7;
+        }
+
+        .date-display::before {
+            left: -10px;
+        }
+
+        .date-display::after {
+            right: -10px;
+        }
+
+        /* 生日祝福样式 */
+        .birthday-message {
+            font-size: 4rem;
+            color: #ff1493;
+            margin-bottom: 60px;
+            font-weight: 900;
+            text-shadow: 4px 4px 8px rgba(231, 76, 60, 0.3);
+            animation: pulseGlow 2.5s infinite alternate;
+            position: relative;
+            padding: 15px 30px;
+            display: inline-block;
+        }
+
+        .birthday-message::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            width: 80%;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, #ff6bc9, transparent);
+            border-radius: 50%;
+        }
+
+        @keyframes pulseGlow {
+            0% { 
+                transform: scale(1); 
+                text-shadow: 4px 4px 8px rgba(231, 76, 60, 0.3);
+            }
+            100% { 
+                transform: scale(1.08); 
+                text-shadow: 4px 4px 15px rgba(255, 20, 147, 0.5), 
+                             0 0 25px rgba(255, 20, 147, 0.3);
+            }
+        }
+
+        /* 装饰圆 */
+        .decoration-circle {
+            position: absolute;
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(5px);
+        }
+
+        .circle-1 {
+            width: 400px;
+            height: 400px;
+            top: -200px;
+            right: -200px;
+            background: radial-gradient(circle, rgba(255, 107, 201, 0.4) 0%, transparent 70%);
+            animation: float 25s infinite ease-in-out;
+        }
+
+        .circle-2 {
+            width: 300px;
+            height: 300px;
+            bottom: -150px;
+            left: -150px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.3) 0%, transparent 70%);
+            animation: float 20s infinite ease-in-out reverse;
+        }
+
+        /* 新增装饰圆 */
+        .circle-3 {
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 10%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+            animation: float 30s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-40px) rotate(90deg); }
+            50% { transform: translateY(0) rotate(180deg); }
+            75% { transform: translateY(40px) rotate(270deg); }
+        }
+
+        /* 导航按钮样式 */
+        .nav-button {
+            padding: 18px 45px;
+            background: linear-gradient(135deg, #ff6bc9, #ff1493);
+            color: white;
+            border: none;
+            border-radius: 60px;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 0 auto;
+            box-shadow: 0 10px 25px rgba(255, 107, 201, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            letter-spacing: 1px;
+        }
+
+        .nav-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff1493, #ff6bc9);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(255, 107, 201, 0.6);
+        }
+
+        .nav-button:hover::before {
+            opacity: 1;
+        }
+
+        .nav-button::after {
+            content: '→';
+            font-size: 22px;
+            font-weight: bold;
+            transition: transform 0.4s ease;
+        }
+
+        .nav-button:hover::after {
+            transform: translateX(8px) scale(1.2);
+        }
+
+        /* 浮动爱心 */
+        .floating-heart {
+            position: absolute;
+            color: rgba(255, 107, 201, 0.3);
+            font-size: 28px;
+            animation: floatHeart 15s infinite ease-in-out;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes floatHeart {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 0.7;
+            }
+            25% { 
+                transform: translateY(-60px) rotate(90deg) scale(1.1);
+                opacity: 1;
+            }
+            50% { 
+                transform: translateY(-120px) rotate(180deg) scale(1);
+                opacity: 0.7;
+            }
+            75% { 
+                transform: translateY(-60px) rotate(270deg) scale(0.9);
+                opacity: 0.5;
+            }
+        }
+
+        /* 音乐控制 */
+        .music-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #ff6bc9, #ff1493);
+            border-radius: 50%;
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(255, 107, 201, 0.5);
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+            border: 3px solid white;
+        }
+
+        .music-control:hover {
+            transform: scale(1.15) rotate(15deg);
+            box-shadow: 0 12px 30px rgba(255, 107, 201, 0.7);
+        }
+
+        .music-control i {
+            font-size: 28px;
+            color: white;
+        }
+
+        /* 新增：闪烁星星 */
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+            z-index: 1;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        /* 新增：生日帽 */
+        .birthday-hat {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            opacity: 0.9;
+            animation: hatWobble 4s infinite ease-in-out;
+        }
+
+        @keyframes hatWobble {
+            0%, 100% { transform: translateX(-50%) rotate(-5deg); }
+            50% { transform: translateX(-50%) rotate(5deg); }
+        }
+
+        /* 新增：气球 */
+        .balloon {
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            border-radius: 50%;
+            bottom: -100px;
+            z-index: 1;
+            animation: balloonRise 25s infinite linear;
+            opacity: 0.8;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            width: 2px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.7);
+            transform: translateX(-50%);
+        }
+
+        @keyframes balloonRise {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(20deg);
+                opacity: 0;
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .date-display {
+                font-size: 2.5rem;
+            }
+            
+            .birthday-message {
+                font-size: 3rem;
+                padding: 10px 20px;
+            }
+            
+            .main-content {
+                padding: 50px 25px;
+                border-radius: 25px;
+            }
+            
+            .nav-button {
+                padding: 16px 35px;
+                font-size: 18px;
+                width: 90%;
+                max-width: 300px;
+            }
+            
+            .circle-1, .circle-2, .circle-3 {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .date-display {
+                font-size: 2rem;
+            }
+            
+            .birthday-message {
+                font-size: 2.5rem;
+            }
+            
+            .music-control {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .music-control i {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 生日帽装饰 -->
+    <div class="birthday-hat">
+        <svg viewBox="0 0 80 80">
+            <path d="M40 10 L10 70 L70 70 Z" fill="#FFD700"/>
+            <circle cx="40" cy="10" r="15" fill="#FF1493"/>
+            <circle cx="40" cy="10" r="8" fill="white"/>
+        </svg>
+    </div>
+    
+    <div class="main-content">
+        <div class="decoration-circle circle-1"></div>
+        <div class="decoration-circle circle-2"></div>
+        <div class="decoration-circle circle-3"></div>
+        
+        <div class="date-display">今天是2025年十二月六日</div>
+        <div class="birthday-message">生日快乐周晶曦！</div>
+        
+        <button class="nav-button" onclick="window.location.href='page2.html'">
+            下一页
+        </button>
+    </div>
+    
+    <!-- 音乐控制 -->
+    <div class="music-control" id="music-control">
+        <i class="fas fa-music"></i>
+    </div>
+    
+    <!-- 音频 -->
+    <audio id="bg-music" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-83.mp3" type="audio/mpeg">
+        您的浏览器不支持音频元素。
+    </audio>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const musicControl = document.getElementById('music-control');
+            const bgMusic = document.getElementById('bg-music');
+            
+            // 创建浮动爱心
+            createFloatingHearts();
+            
+            // 创建闪烁星星
+            createStars();
+            
+            // 创建气球
+            createBalloons();
+            
+            // 尝试自动播放音乐
+            const playMusic = () => {
+                bgMusic.volume = 0.6;
+                bgMusic.play().catch(e => {
+                    console.log("自动播放被阻止，需要用户交互");
+                    musicControl.innerHTML = '<i class="fas fa-play"></i>';
+                });
+            };
+            
+            // 延迟播放以避免自动播放策略
+            setTimeout(playMusic, 1000);
+            
+            // 音乐控制按钮事件
+            let isPlaying = true;
+            musicControl.addEventListener('click', function() {
+                if (bgMusic.paused) {
+                    bgMusic.play();
+                    musicControl.innerHTML = '<i class="fas fa-music"></i>';
+                    isPlaying = true;
+                } else {
+                    bgMusic.pause();
+                    musicControl.innerHTML = '<i class="fas fa-play"></i>';
+                    isPlaying = false;
+                }
+            });
+            
+            // 点击页面任意位置也可以播放/暂停音乐
+            document.body.addEventListener('click', function(e) {
+                if (e.target !== musicControl && !musicControl.contains(e.target)) {
+                    if (bgMusic.paused && !isPlaying) {
+                        bgMusic.play();
+                        musicControl.innerHTML = '<i class="fas fa-music"></i>';
+                        isPlaying = true;
+                    }
+                }
+            });
+            
+            // 添加一些交互效果
+            const birthdayMessage = document.querySelector('.birthday-message');
+            birthdayMessage.addEventListener('mouseover', function() {
+                this.style.animation = 'pulseGlow 0.8s infinite alternate';
+            });
+            
+            birthdayMessage.addEventListener('mouseout', function() {
+                this.style.animation = 'pulseGlow 2.5s infinite alternate';
+            });
+        });
+        
+        function createFloatingHearts() {
+            const body = document.body;
+            const heartCount = 25;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                heart.style.animationDelay = Math.random() * 12 + 's';
+                heart.style.fontSize = (Math.random() * 25 + 15) + 'px';
+                heart.style.color = `rgba(${255}, ${Math.floor(Math.random() * 100)}, ${Math.floor(Math.random() * 150 + 100)}, ${0.2 + Math.random() * 0.3})`;
+                body.appendChild(heart);
+            }
+        }
+        
+        function createStars() {
+            const body = document.body;
+            const starCount = 30;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.width = Math.random() * 10 + 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDelay = Math.random() * 5 + 's';
+                star.style.animationDuration = Math.random() * 3 + 2 + 's';
+                body.appendChild(star);
+            }
+        }
+        
+        function createBalloons() {
+            const body = document.body;
+            const balloonCount = 12;
+            const colors = ['#ff6bc9', '#ff1493', '#3498db', '#ffd700', '#9b59b6', '#2ecc71'];
+            
+            for (let i = 0; i < balloonCount; i++) {
+                const balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                balloon.style.left = Math.random() * 100 + 'vw';
+                balloon.style.animationDelay = Math.random() * 15 + 's';
+                balloon.style.animationDuration = Math.random() * 10 + 20 + 's';
+                
+                // 设置气球颜色
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                balloon.style.backgroundColor = color;
+                balloon.style.background = `radial-gradient(circle at 30% 30%, ${color} 10%, ${darkenColor(color, 20)} 100%)`;
+                
+                // 添加轻微旋转
+                balloon.style.transform = `rotate(${Math.random() * 20 - 10}deg)`;
+                
+                body.appendChild(balloon);
+            }
+        }
+        
+        // 辅助函数：加深颜色
+        function darkenColor(color, percent) {
+            const num = parseInt(color.replace("#", ""), 16);
+            const amt = Math.round(2.55 * percent);
+            const R = (num >> 16) - amt;
+            const G = (num >> 8 & 0x00FF) - amt;
+            const B = (num & 0x0000FF) - amt;
+            
+            return "#" + (
+                0x1000000 + 
+                (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 + 
+                (G < 255 ? G < 1 ? 0 : G : 255) * 0x100 + 
+                (B < 255 ? B < 1 ? 0 : B : 255)
+            ).toString(16).slice(1);
+        }
+        
+        // 添加页面加载动画
+        window.addEventListener('load', function() {
+            document.querySelector('.main-content').style.transform = 'scale(0.9)';
+            document.querySelector('.main-content').style.opacity = '0';
+            
+            setTimeout(() => {
+                document.querySelector('.main-content').style.transition = 'transform 0.8s ease, opacity 0.8s ease';
+                document.querySelector('.main-content').style.transform = 'scale(1)';
+                document.querySelector('.main-content').style.opacity = '1';
+            }, 300);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美好祝愿 - 给周晶曦</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #d8bfd8, #e6e6fa, #f5f5f5, #fff0f5, #e6f7ff);
+            background-size: 400% 400%;
+            animation: gradientFlow 20s ease infinite;
+            color: #4b0082;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .wish-container {
+            max-width: 950px;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+            border-radius: 40px;
+            padding: 80px 60px;
+            box-shadow: 0 25px 60px rgba(75, 0, 130, 0.2),
+                        0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+                        0 0 50px rgba(147, 112, 219, 0.1) inset;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            z-index: 2;
+        }
+
+        /* 添加容器装饰边框效果 */
+        .wish-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 40px;
+            padding: 4px;
+            background: linear-gradient(135deg, #9370db, #8a2be2, #20b2aa, #9370db);
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .wish-title {
+            font-size: 3.2rem;
+            color: #9370db;
+            margin-bottom: 60px;
+            font-weight: 800;
+            text-shadow: 3px 3px 6px rgba(147, 112, 219, 0.3),
+                         0 0 30px rgba(147, 112, 219, 0.2);
+            position: relative;
+            display: inline-block;
+            padding: 0 30px;
+            letter-spacing: 2px;
+        }
+
+        .wish-title::before,
+        .wish-title::after {
+            content: "✧";
+            position: absolute;
+            color: #8a2be2;
+            font-size: 2.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.7;
+            animation: spin 10s infinite linear;
+        }
+
+        .wish-title::before {
+            left: -10px;
+        }
+
+        .wish-title::after {
+            right: -10px;
+        }
+
+        .wish-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 6px;
+            background: linear-gradient(90deg, transparent, #9370db, #8a2be2, #9370db, transparent);
+            border-radius: 3px;
+            box-shadow: 0 5px 15px rgba(147, 112, 219, 0.4);
+        }
+
+        @keyframes spin {
+            0% { transform: translateY(-50%) rotate(0deg); }
+            100% { transform: translateY(-50%) rotate(360deg); }
+        }
+
+        .wish-content {
+            display: flex;
+            flex-direction: column;
+            gap: 45px;
+            margin-bottom: 70px;
+        }
+
+        .wish-item {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #8a2be2;
+            padding: 25px 40px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, rgba(147, 112, 219, 0.15), rgba(138, 43, 226, 0.08));
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards;
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.15),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .wish-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #9370db, #8a2be2, #9370db);
+            z-index: -1;
+        }
+
+        .wish-item:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(138, 43, 226, 0.25),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+            background: linear-gradient(135deg, rgba(147, 112, 219, 0.2), rgba(138, 43, 226, 0.12));
+        }
+
+        .wish-item:hover::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shine 1.5s ease;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .wish-item:nth-child(1) { animation-delay: 0.3s; }
+        .wish-item:nth-child(2) { animation-delay: 0.6s; }
+        .wish-item:nth-child(3) { animation-delay: 0.9s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .decoration-star {
+            position: absolute;
+            font-size: 30px;
+            color: rgba(147, 112, 219, 0.4);
+            animation: twinkle 4s infinite ease-in-out;
+            z-index: 1;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.3) rotate(180deg); }
+        }
+
+        /* 新增：浮动花朵 */
+        .flower {
+            position: absolute;
+            font-size: 24px;
+            color: rgba(147, 112, 219, 0.3);
+            animation: floatFlower 25s infinite linear;
+            z-index: 1;
+            opacity: 0;
+        }
+
+        @keyframes floatFlower {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* 新增：彩色气泡 */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(147, 112, 219, 0.1));
+            animation: floatBubble 20s infinite ease-in-out;
+            z-index: 1;
+        }
+
+        @keyframes floatBubble {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-40px) scale(1.1); }
+        }
+
+        /* 导航按钮 */
+        .navigation {
+            display: flex;
+            gap: 35px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            padding: 20px 45px;
+            border: none;
+            border-radius: 60px;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-width: 220px;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 60px;
+            padding: 3px;
+            background: linear-gradient(135deg, #20b2aa, #008b8b, #9370db, #8a2be2);
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .nav-button:hover::before {
+            opacity: 1;
+        }
+
+        .prev-btn {
+            background: linear-gradient(135deg, #20b2aa, #008b8b);
+            color: white;
+            box-shadow: 0 10px 30px rgba(32, 178, 170, 0.4);
+        }
+
+        .prev-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(32, 178, 170, 0.6);
+        }
+
+        .next-btn {
+            background: linear-gradient(135deg, #9370db, #8a2be2);
+            color: white;
+            box-shadow: 0 10px 30px rgba(147, 112, 219, 0.4);
+        }
+
+        .next-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(147, 112, 219, 0.6);
+        }
+
+        .nav-button i {
+            font-size: 22px;
+            transition: transform 0.3s ease;
+        }
+
+        .prev-btn:hover i {
+            transform: translateX(-5px);
+        }
+
+        .next-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        /* 音乐控制 */
+        .music-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #9370db, #8a2be2);
+            border-radius: 50%;
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(147, 112, 219, 0.5);
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.4s ease;
+            border: 3px solid white;
+        }
+
+        .music-control:hover {
+            transform: scale(1.15) rotate(15deg);
+            box-shadow: 0 15px 40px rgba(147, 112, 219, 0.7);
+            background: linear-gradient(135deg, #8a2be2, #9370db);
+        }
+
+        .music-control i {
+            font-size: 28px;
+            color: white;
+        }
+
+        /* 新增：祝福语图标装饰 */
+        .wish-icon {
+            margin-left: 15px;
+            display: inline-block;
+            animation: iconFloat 3s infinite ease-in-out;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .wish-container {
+                padding: 60px 40px;
+            }
+            
+            .wish-title {
+                font-size: 2.8rem;
+            }
+            
+            .wish-item {
+                font-size: 2.8rem;
+                padding: 20px 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .wish-container {
+                padding: 50px 30px;
+                border-radius: 30px;
+            }
+            
+            .wish-title {
+                font-size: 2.2rem;
+                margin-bottom: 50px;
+            }
+            
+            .wish-title::before,
+            .wish-title::after {
+                font-size: 1.8rem;
+            }
+            
+            .wish-item {
+                font-size: 2.2rem;
+                padding: 18px 25px;
+            }
+            
+            .nav-button {
+                padding: 16px 35px;
+                font-size: 18px;
+                min-width: 180px;
+            }
+            
+            .music-control {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .music-control i {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .wish-container {
+                padding: 40px 20px;
+                border-radius: 25px;
+            }
+            
+            .wish-title {
+                font-size: 1.8rem;
+                padding: 0 15px;
+            }
+            
+            .wish-item {
+                font-size: 1.8rem;
+                padding: 15px 20px;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .nav-button {
+                width: 100%;
+                max-width: 250px;
+                padding: 14px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 动态背景元素 -->
+    <div class="wish-container">
+        <h1 class="wish-title">美好的祝愿</h1>
+        
+        <div class="wish-content">
+            <div class="wish-item">希望你天天开心 <span class="wish-icon">✨</span></div>
+            <div class="wish-item">愿你事事顺遂 <span class="wish-icon">🌈</span></div>
+            <div class="wish-item">祝你得偿所愿 <span class="wish-icon">🎯</span></div>
+        </div>
+        
+        <div class="navigation">
+            <button class="nav-button prev-btn" onclick="window.location.href='index.html'">
+                <i class="fas fa-arrow-left"></i> 上一页
+            </button>
+            <button class="nav-button next-btn" onclick="window.location.href='page3.html'">
+                下一页 <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- 音乐控制 -->
+    <div class="music-control" id="music-control">
+        <i class="fas fa-music"></i>
+    </div>
+    
+    <!-- 音频 -->
+    <audio id="bg-music" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-83.mp3" type="audio/mpeg">
+        您的浏览器不支持音频元素。
+    </audio>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const musicControl = document.getElementById('music-control');
+            const bgMusic = document.getElementById('bg-music');
+            
+            // 创建装饰元素
+            createStars();
+            createFlowers();
+            createBubbles();
+            
+            // 尝试自动播放音乐
+            const playMusic = () => {
+                bgMusic.volume = 0.5;
+                bgMusic.play().catch(e => {
+                    console.log("自动播放被阻止，需要用户交互");
+                    musicControl.innerHTML = '<i class="fas fa-play"></i>';
+                });
+            };
+            
+            // 延迟播放以避免自动播放策略
+            setTimeout(playMusic, 800);
+            
+            // 音乐控制按钮事件
+            let isPlaying = true;
+            musicControl.addEventListener('click', function() {
+                if (bgMusic.paused) {
+                    bgMusic.play();
+                    musicControl.innerHTML = '<i class="fas fa-music"></i>';
+                    isPlaying = true;
+                } else {
+                    bgMusic.pause();
+                    musicControl.innerHTML = '<i class="fas fa-play"></i>';
+                    isPlaying = false;
+                }
+            });
+            
+            // 添加页面加载动画
+            const wishContainer = document.querySelector('.wish-container');
+            wishContainer.style.transform = 'translateY(30px)';
+            wishContainer.style.opacity = '0';
+            
+            setTimeout(() => {
+                wishContainer.style.transition = 'transform 1s ease, opacity 1s ease';
+                wishContainer.style.transform = 'translateY(0)';
+                wishContainer.style.opacity = '1';
+            }, 300);
+            
+            // 添加祝福语点击效果
+            const wishItems = document.querySelectorAll('.wish-item');
+            wishItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                    
+                    // 创建点击效果
+                    createClickEffect(event);
+                });
+            });
+            
+            // 添加按钮涟漪效果
+            const navButtons = document.querySelectorAll('.nav-button');
+            navButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    createRippleEffect(e, this);
+                });
+            });
+        });
+        
+        function createStars() {
+            const container = document.querySelector('.wish-container');
+            const starCount = 25;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'decoration-star';
+                star.innerHTML = '★';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 5 + 's';
+                star.style.fontSize = (Math.random() * 30 + 15) + 'px';
+                star.style.opacity = 0.2 + Math.random() * 0.4;
+                star.style.color = `rgba(${147 + Math.random() * 50}, ${112 + Math.random() * 50}, ${219 + Math.random() * 30}, ${0.2 + Math.random() * 0.3})`;
+                container.appendChild(star);
+            }
+        }
+        
+        function createFlowers() {
+            const body = document.body;
+            const flowerCount = 15;
+            const flowerSymbols = ['❀', '✿', '❁', '🌸', '🌺', '🌼'];
+            
+            for (let i = 0; i < flowerCount; i++) {
+                const flower = document.createElement('div');
+                flower.className = 'flower';
+                flower.innerHTML = flowerSymbols[Math.floor(Math.random() * flowerSymbols.length)];
+                flower.style.left = Math.random() * 100 + 'vw';
+                flower.style.fontSize = (Math.random() * 25 + 15) + 'px';
+                flower.style.animationDelay = Math.random() * 20 + 's';
+                flower.style.animationDuration = Math.random() * 15 + 20 + 's';
+                flower.style.color = `rgba(${147 + Math.random() * 50}, ${112 + Math.random() * 50}, ${219 + Math.random() * 30}, ${0.3 + Math.random() * 0.4})`;
+                body.appendChild(flower);
+            }
+        }
+        
+        function createBubbles() {
+            const body = document.body;
+            const bubbleCount = 20;
+            
+            for (let i = 0; i < bubbleCount; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                bubble.style.left = Math.random() * 100 + 'vw';
+                bubble.style.top = Math.random() * 100 + 'vh';
+                bubble.style.width = (Math.random() * 60 + 20) + 'px';
+                bubble.style.height = bubble.style.width;
+                bubble.style.animationDelay = Math.random() * 10 + 's';
+                bubble.style.animationDuration = Math.random() * 10 + 15 + 's';
+                body.appendChild(bubble);
+            }
+        }
+        
+        function createClickEffect(event) {
+            const effect = document.createElement('div');
+            effect.style.position = 'absolute';
+            effect.style.width = '20px';
+            effect.style.height = '20px';
+            effect.style.borderRadius = '50%';
+            effect.style.background = 'radial-gradient(circle, rgba(147, 112, 219, 0.7), transparent)';
+            effect.style.pointerEvents = 'none';
+            effect.style.left = (event.clientX - 10) + 'px';
+            effect.style.top = (event.clientY - 10) + 'px';
+            effect.style.zIndex = '1000';
+            effect.style.animation = 'clickEffect 0.5s forwards';
+            
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes clickEffect {
+                    0% { transform: scale(1); opacity: 1; }
+                    100% { transform: scale(3); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+            document.body.appendChild(effect);
+            
+            setTimeout(() => {
+                effect.remove();
+                style.remove();
+            }, 500);
+        }
+        
+        function createRippleEffect(event, button) {
+            const ripple = document.createElement('span');
+            const rect = button.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = event.clientX - rect.left - size / 2;
+            const y = event.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.style.position = 'absolute';
+            ripple.style.borderRadius = '50%';
+            ripple.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+            ripple.style.transform = 'scale(0)';
+            ripple.style.animation = 'ripple 0.6s linear';
+            ripple.style.zIndex = '0';
+            
+            button.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        }
+        
+        // 添加涟漪动画样式
+        const rippleStyle = document.createElement('style');
+        rippleStyle.innerHTML = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+    </script>
+</body>
+</html>
